@@ -1,0 +1,7 @@
+django
+psycopg2
+djangorestframework
+markdown
+django-filter
+djangorestframework-simplejwt
+pytest-django
