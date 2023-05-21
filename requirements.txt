@@ -1,6 +1,6 @@
 asgiref==3.6.0
 attrs==22.2.0
-Django==4.1.7
+Django
 django-filter==23.1
 django-qr-code==3.1.1
 djangorestframework==3.14.0
