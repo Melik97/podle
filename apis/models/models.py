@@ -14,3 +14,4 @@ class Restaurant(models.Model):
 
     class Meta:
         ordering = ['-id']
+
