@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from apis.views import RestaurantAPIView
+from apis.views.views import RestaurantAPIView
 
 restaurants = DefaultRouter()
 restaurants.register(

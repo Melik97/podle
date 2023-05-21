@@ -1,13 +1,11 @@
-from django.shortcuts import render
-
 # Create your views here.
 from rest_framework import viewsets
 from rest_framework.response import Response
 
-from .exceptions import StatusRestaurantNameIsExist, StatusRestaurantDoesNotExist
-from .helpers import int_or_notfound
-from .models import Restaurant
-from .serializers import RestaurantSerializer
+from apis.exceptions import StatusRestaurantNameIsExist, StatusRestaurantDoesNotExist
+from apis.helpers import int_or_notfound
+from apis.models.models import Restaurant
+from apis.serilizers.serializers import RestaurantSerializer
 
 
 class RestaurantAPIView(viewsets.ViewSet):
