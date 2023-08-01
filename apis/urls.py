@@ -7,16 +7,15 @@ from apis.views.restaurants import RestaurantAPIView
 Default = DefaultRouter()
 Default.register(r'restaurants', RestaurantAPIView, basename="restaurant")
 Default.register(r'menus', MenusAPIView, basename="menu")
-# restaurants.register(
-#     r'restaurants/<str:pk>',
-#     RestaurantAPIView,
-#     basename="restaurant"
-#     )
 
 
 # The API URLs are now determined automatically by the router.
 urlpatterns = [
     path('', include(Default.urls)),
-    path('restaurants/<str:pk>/menus', MenusAPIView.as_view({'get': 'retrieve'}), name='restaurant-menu')
+    path(
+        'restaurants/<str:restaurant_id>/menus',
+        MenusAPIView.as_view({'get': 'retrieve', 'post': 'create'}),
+        name='restaurant-menu'
+    )
 ]
 

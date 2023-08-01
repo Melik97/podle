@@ -1,28 +1,28 @@
 from django.db import models
-from django.db.models import CASCADE
-
+from apis.models.category import Category
 from apis.models.restaurant import Restaurant
 
 
 class Menu(models.Model):
     name = models.CharField(max_length=100)
-    description = models.TextField()
-    price = models.DecimalField(max_digits=6, decimal_places=2)
-    image = models.ImageField(
-        upload_to='restaurant/menus/',
-        blank=True,
-        null=True
-    )
-    status = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     modified_at = models.DateTimeField(auto_now=True)
-    restaurant_id = models.ForeignKey(
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+    )
+    restaurant = models.ForeignKey(
         Restaurant,
-        on_delete=CASCADE,
-        db_constraint=True
+        on_delete=models.CASCADE,
+        null=False,
+        default=False,
     )
 
     def __str__(self):
+        if self.category.name:
+            return self.category.name
         return self.name
 
     class Meta:

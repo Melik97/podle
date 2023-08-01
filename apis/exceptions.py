@@ -13,6 +13,18 @@ class StatusRestaurantDoesNotExist(APIException):
     default_code = '1001'
 
 
+class StatusMenuDoesNotExist(APIException):
+    status_code = 400
+    default_detail = 'Menu Does Not Exist'
+    default_code = '1002'
+
+
+class StatusMenuIsExist(APIException):
+    status_code = 400
+    default_detail = 'Menu Is Exist'
+    default_code = '1003'
+
+
 class HTTPNotFound(APIException):
     status_code = 404
     default_detail = '404 Not Found'
