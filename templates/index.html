@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% load rest_framework %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>restaurants</h1>
+<ul>
+    {% for restaurant in restaurants %}
+    <li>{{ restaurant.name }}</li>
+    {% endfor %}
+</ul>
+</body>
+</html>

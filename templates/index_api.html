@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Restaurant API Example</title>
+</head>
+<body>
+  <div id="restaurantData">
+      HELLO
+  </div>
+
+  <script>
+    function fetchRestaurantData() {
+      fetch('http://127.0.0.1:8000/apiv1/restaurants/1/')
+        .then(response => response.json())
+        .then(data => displayRestaurantData(data))
+        .catch(error => console.error('Error fetching restaurant data:', error));
+    }
+
+    function displayRestaurantData(data) {
+      var restaurantDataHTML =
+        <h2>${data.name}</h2>
+      ;
+
+      document.getElementById('restaurantData').innerHTML = restaurantDataHTML;
+    }
+
+    fetchRestaurantData();
+  </script>
+</body>
+</html>

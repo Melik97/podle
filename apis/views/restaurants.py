@@ -1,21 +1,25 @@
-# Create your views here.
 from rest_framework import viewsets
+from rest_framework.renderers import TemplateHTMLRenderer
 from rest_framework.response import Response
 
-from apis.exceptions import StatusRestaurantNameIsExist, StatusRestaurantDoesNotExist
+from apis.exceptions import StatusRestaurantNameIsExist, \
+    StatusRestaurantDoesNotExist
 from apis.helpers import int_or_notfound
-from apis.models.models import Restaurant
+from apis.models.restaurant import Restaurant
 from apis.serilizers.serializers import RestaurantSerializer
+from apis.views.menus import MenusAPIView
 
 
 class RestaurantAPIView(viewsets.ViewSet):
+    # renderer_classes = [TemplateHTMLRenderer]
+    # template_name = 'index.html'
 
     @staticmethod
     def list(request):
         # request.GET.urlencode()
         queryset = Restaurant.objects.all()
         serializer = RestaurantSerializer(queryset, many=True)
-        return Response(serializer.data)
+        return Response({'restaurants': serializer.data})
 
     @staticmethod
     def create(request):
