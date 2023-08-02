@@ -25,6 +25,11 @@ class StatusMenuIsExist(APIException):
     default_code = '1003'
 
 
+class StatusCategoryIsExist(APIException):
+    status_code = 400
+    default_detail = 'Category Is Exist'
+    default_code = '1003'
+
 class HTTPNotFound(APIException):
     status_code = 404
     default_detail = '404 Not Found'

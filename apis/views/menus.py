@@ -13,7 +13,7 @@ class MenusAPIView(viewsets.ViewSet):
 
     @staticmethod
     def retrieve(request, restaurant_id):
-        menu = Menu.objects.get(restaurant_id=restaurant_id)
+        menu = Menu.objects.get(restaurant=restaurant_id)
         if menu is None:
             raise StatusMenuDoesNotExist()
 
@@ -26,25 +26,25 @@ class MenusAPIView(viewsets.ViewSet):
         serializer = MenuSerializer(queryset, many=True)
         return Response({'menus': serializer.data})
 
-    @staticmethod
-    def create(request, restaurant_id):
-        data = request.data
-        restaurant = Restaurant.objects.filter(pk=restaurant_id).first()
-        if restaurant is None:
-            raise StatusRestaurantDoesNotExist()
-
-        is_exist = Menu.objects.filter(restaurant_id=restaurant_id).first()
-        if is_exist is not None:
-            raise StatusMenuIsExist()
-
-        menu = Menu.objects.create(
-            name=data['name'],
-            description=data['description'],
-            image=data['image'],
-            restaurant_id=restaurant.pk,
-        )
-        serializer = MenuSerializer(menu)
-        return Response(serializer.data)
+    # @staticmethod
+    # def create(request, restaurant_id):
+    #     data = request.data
+    #     restaurant = Restaurant.objects.filter(pk=restaurant_id).first()
+    #     if restaurant is None:
+    #         raise StatusRestaurantDoesNotExist()
+    #
+    #     is_exist = Menu.objects.filter(restaurant_id=restaurant_id).first()
+    #     if is_exist is not None:
+    #         raise StatusMenuIsExist()
+    #
+    #     menu = Menu.objects.create(
+    #         name=data['name'],
+    #         description=data['description'],
+    #         image=data['image'],
+    #         restaurant_id=restaurant.pk,
+    #     )
+    #     serializer = MenuSerializer(menu)
+    #     return Response(serializer.data)
     #
     # @staticmethod
     # def delete(request, pk):

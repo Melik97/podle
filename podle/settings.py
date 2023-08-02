@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
+    'django_celery_results',
     'apis',
 ]
 
@@ -128,6 +129,17 @@ REST_FRAMEWORK = {
     'TEST_REQUEST_DEFAULT_FORMAT': 'json',
 }
 
+# Redis
+REDIS_HOST = 'localhost'
+REDIS_PORT = '6379'
+REDIS_BROKER_URL = 'redis://' + REDIS_HOST + ':' + REDIS_PORT + '/0'
+
+# RabitMQ
+RABBIT_BROKER_URL = 'amqp://guest:guest@localhost:5672/'
+
+# # Celery settings
+# CELERY_BROKER_URL = "redis://localhost:6379"
+# CELERY_RESULT_BACKEND = "redis://localhost:6379"
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
