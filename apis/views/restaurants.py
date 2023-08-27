@@ -14,7 +14,7 @@ class RestaurantAPIView(viewsets.ViewSet):
     def list(request):
         queryset = Restaurant.objects.all()
         serializer = RestaurantSerializer(queryset, many=True)
-        return Response({'restaurants': serializer.data})
+        return Response(serializer.data)
 
     @staticmethod
     def create(request):
@@ -68,3 +68,4 @@ class RestaurantAPIView(viewsets.ViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
+
