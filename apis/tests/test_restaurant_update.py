@@ -41,8 +41,7 @@ class TestRestaurant(APITestCase):
         response = self.client.delete(
             f'/apiv1/restaurants/0/',
         )
-        assert response.status_code == 400
-        assert response.json()['detail'] == 'Restaurant Does Not Exist'
+        assert response.status_code == 404
 
         response = self.client.get(
             f'/apiv1/restaurants/a/',

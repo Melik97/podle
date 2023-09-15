@@ -1,4 +1,5 @@
 from rest_framework import viewsets
+from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 
 from apis.exceptions import StatusRestaurantNameIsExist, \
@@ -35,10 +36,7 @@ class RestaurantAPIView(viewsets.ViewSet):
     @staticmethod
     def delete(request, pk):
         pk = int_or_notfound(pk)
-        restaurant = Restaurant.objects.filter(pk=pk).first()
-        if restaurant is None:
-            raise StatusRestaurantDoesNotExist()
-
+        restaurant = get_object_or_404(Restaurant, pk=pk)
         restaurant.delete()
         serializer = RestaurantSerializer(restaurant)
         return Response(serializer.data)
@@ -46,17 +44,14 @@ class RestaurantAPIView(viewsets.ViewSet):
     @staticmethod
     def get(request, pk=None):
         pk = int_or_notfound(pk)
-        restaurant = Restaurant.objects.filter(pk=pk).first()
-        if restaurant is None:
-            raise StatusRestaurantDoesNotExist()
-
+        restaurant = get_object_or_404(Restaurant, pk=pk)
         serializer = RestaurantSerializer(restaurant)
         return Response(serializer.data)
 
     @staticmethod
     def partial_update(request, pk):
         pk = int_or_notfound(pk)
-        restaurant = Restaurant.objects.filter(pk=pk).first()
+        restaurant = get_object_or_404(Restaurant, pk=pk)
         if restaurant is None:
             raise StatusRestaurantDoesNotExist()
 
