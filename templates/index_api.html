@@ -1,30 +1,44 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Restaurant API Example</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 </head>
 <body>
-  <div id="restaurantData">
-      HELLO
-  </div>
+<!--<p id="demo"></p>-->
+<div id="result"></div>
+    <script>
+        const apiUrl = 'http://127.0.0.1:8000/apiv1/restaurants/?format=json';
+        fetch (apiUrl)
+        .then(response =>{
+            if (!response.ok){
+                throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+        })
+        .then(data => {
+            console.log(data);
+                const resultsContainer = document.getElementById("result");
 
-  <script>
-    function fetchRestaurantData() {
-      fetch('http://127.0.0.1:8000/apiv1/restaurants/1/')
-        .then(response => response.json())
-        .then(data => displayRestaurantData(data))
-        .catch(error => console.error('Error fetching restaurant data:', error));
-    }
+                data.forEach(item => {
+                const p = document.createElement('p');
+                const description = document.createElement('description');
+                p.textContent = item.name;
+                description.textContent = item.description ;
 
-    function displayRestaurantData(data) {
-      var restaurantDataHTML =
-        <h2>${data.name}</h2>
-      ;
+                resultsContainer.appendChild(p);
+                resultsContainer.appendChild(description);
+                })
+<!--                resultElement.textContent = JSON.stringify(x.name, null, 2);-->
 
-      document.getElementById('restaurantData').innerHTML = restaurantDataHTML;
-    }
+        })
+        .catch(error => {
+            console.error('fetch error:', error);
+        });
+        </script>
 
-    fetchRestaurantData();
-  </script>
+
+
 </body>
 </html>
