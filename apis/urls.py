@@ -14,6 +14,7 @@ Default.register(r'categories', CategoriesAPIView, basename="category")
 # The API URLs are now determined automatically by the router.
 urlpatterns = [
     path('', include(Default.urls)),
+    # path('restaurants/', RestaurantAPIView),
     path(
         'restaurants/<str:restaurant_id>/menus',
         MenusAPIView.as_view({'get': 'retrieve'}),
