@@ -10,5 +10,6 @@ class Restaurant(models.Model):
     modified_at = models.DateTimeField(auto_now=True)
 
     class Meta:
+        db_table = 'restaurant'
         ordering = ['-id']
 

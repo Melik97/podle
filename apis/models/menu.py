@@ -26,5 +26,6 @@ class Menu(models.Model):
         return self.name
 
     class Meta:
+        db_table = 'menu'
         ordering = ['-id']
 

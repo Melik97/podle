@@ -16,3 +16,7 @@ class MenuRestaurant(models.Model):
         null=False
     )
 
+    class Meta:
+        db_table = 'menu_restaurant'
+
+
