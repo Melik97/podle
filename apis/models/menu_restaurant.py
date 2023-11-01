@@ -5,12 +5,12 @@ from apis.models.restaurant import Restaurant
 
 
 class MenuRestaurant(models.Model):
-    restaurant = models.ForeignKey(
+    restaurant_id = models.ForeignKey(
         Restaurant,
         on_delete=models.CASCADE,
         null=False
     )
-    menu = models.ForeignKey(
+    menu_id = models.ForeignKey(
         Menu,
         on_delete=models.CASCADE,
         null=False
