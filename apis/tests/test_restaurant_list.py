@@ -2,7 +2,7 @@ from rest_framework.test import APITestCase
 
 from apis.models.restaurant import Restaurant
 
-# APITransactionTestCase for debugging
+
 class TestRestaurant(APITestCase):
 
     @classmethod

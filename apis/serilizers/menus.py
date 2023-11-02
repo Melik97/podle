@@ -2,7 +2,6 @@ from rest_framework import serializers
 
 from apis.models.category import Category
 from apis.models.menu import Menu
-from apis.serilizers.categories import CategorySerializer
 
 
 class MenuSerializer(serializers.ModelSerializer):

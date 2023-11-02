@@ -13,6 +13,7 @@ from .models.review import Review
 class RestaurantAdmin(admin.ModelAdmin):
     list_display = ['name', 'description', 'status']
 
+
 class MenuAdmin(admin.ModelAdmin):
     list_display = ['name', 'category', 'restaurant']
 

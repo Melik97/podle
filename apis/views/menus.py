@@ -1,12 +1,8 @@
-from rest_framework import generics, mixins, viewsets
+from rest_framework import viewsets
 from rest_framework.response import Response
 
-from apis.exceptions import StatusMenuDoesNotExist, StatusMenuIsExist, \
-    StatusRestaurantDoesNotExist
-from apis.helpers import int_or_notfound
+from apis.exceptions import StatusMenuDoesNotExist
 from apis.models.menu import Menu
-from apis.models.menu_restaurant import MenuRestaurant
-from apis.models.restaurant import Restaurant
 from apis.serilizers.menus import MenuSerializer
 
 
