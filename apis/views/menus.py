@@ -1,4 +1,4 @@
-from rest_framework import generics, mixins
+from rest_framework import generics, mixins, viewsets
 from rest_framework.response import Response
 
 from apis.exceptions import StatusMenuDoesNotExist, StatusMenuIsExist, \
@@ -10,26 +10,27 @@ from apis.models.restaurant import Restaurant
 from apis.serilizers.menus import MenuSerializer
 
 
-class MenusAPIView(mixins.CreateModelMixin, mixins.UpdateModelMixin,
-                   generics.GenericAPIView):
+# class MenusAPIView(mixins.CreateModelMixin, mixins.UpdateModelMixin,
+#                    generics.GenericAPIView):
+class MenusAPIView(viewsets.ViewSet):
 
     def create(self, request, *args, **kwargs):
         pass
 
-    # @staticmethod
-    # def retrieve(request, restaurant_id):
-    #     menu = Menu.objects.get(restaurant=restaurant_id)
-    #     if menu is None:
-    #         raise StatusMenuDoesNotExist()
+    @staticmethod
+    def retrieve(request, restaurant_id):
+        menu = Menu.objects.get(restaurant=restaurant_id)
+        if menu is None:
+            raise StatusMenuDoesNotExist()
 
-    #     serializer = MenuSerializer(menu)
-    #     return Response(serializer.data)
+        serializer = MenuSerializer(menu)
+        return Response(serializer.data)
 
-    # @staticmethod
-    # def list(request):
-    #     queryset = Menu.objects.all()
-    #     serializer = MenuSerializer(queryset, many=True)
-    #     return Response({'menus': serializer.data})
+    @staticmethod
+    def list(request):
+        queryset = Menu.objects.all()
+        serializer = MenuSerializer(queryset, many=True)
+        return Response({'menus': serializer.data})
 
     # @staticmethod
     # def create(request, restaurant_id):

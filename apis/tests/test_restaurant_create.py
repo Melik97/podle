@@ -1,4 +1,4 @@
-from rest_framework.test import APITestCase, Tran
+from rest_framework.test import APITestCase
 
 
 class TestRestaurant(APITestCase):
