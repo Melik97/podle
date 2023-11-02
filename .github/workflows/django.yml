@@ -80,9 +80,9 @@ jobs:
       - name: Run database migrations
         run: |
           python manage.py migrate
-      - name: Start Celery worker
-        run: |
-          celery -A podle worker
+      # - name: Start Celery worker
+      #   run: |
+      #     celery -A podle worker
           
       - name: Run tests
         run: pytest
