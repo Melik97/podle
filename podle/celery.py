@@ -1,7 +1,9 @@
 import os
+
 from celery import Celery
 
 from podle.settings import RABBIT_BROKER_URL
+
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "podle.settings")
 app = Celery(

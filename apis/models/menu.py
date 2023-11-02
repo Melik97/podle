@@ -1,4 +1,5 @@
 from django.db import models
+
 from apis.models.category import Category
 from apis.models.restaurant import Restaurant
 

@@ -5,6 +5,7 @@ from apis.views.categories import CategoriesAPIView
 from apis.views.menus import MenusAPIView
 from apis.views.restaurants import RestaurantAPIView
 
+
 Default = DefaultRouter()
 Default.register(r'restaurants', RestaurantAPIView, basename="restaurant")
 Default.register(r'menus', MenusAPIView, basename="menu")
